@@ -37,6 +37,8 @@ class TeaTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
         cell.textLabel?.text=allTea[indexPath.row].title
+        cell.detailTextLabel?.text=allTea[indexPath.row].text
+        cell.imageView?.image=UIImage(named:allTea[indexPath.row].image)
 
         return cell
     }
