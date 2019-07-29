@@ -8,33 +8,42 @@
 
 import UIKit
 
-class TeaTableViewController: UITableViewController {
+struct Tea{
+    var id:Int
+    var title:String
+    var text:String
+    var image:String
+}
 
+
+class TeaTableViewController: UITableViewController {
+    var allTea = [
+        Tea(id:1,title:"Black",text:"a tea with high caffeine, common examples are English Breakfast and Earl Grey",image:"Black Tea"),
+        Tea(id:2,title:"Green",text:"a tea that originated in China, with less caffeine than black tea but still a considerable amount, common examples are matcha and sencha",image:"Green Tea"),
+        Tea(id:3,title:"White",text:"the most delicate tea with low levels of caffeine, common examples are Silver Needle and white Peony",image:"White Tea")]
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        return allTea.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
-        cell.textLabel?.text="Section \(indexPath.section) Row \(indexPath.row)"
+        cell.textLabel?.text=allTea[indexPath.row].title
 
         return cell
     }
     override func tableView(_ tableView: UITableView,titleForHeaderInSection section:Int)->String? {
         return "Section \(section)"
     }
-
+    
 
 /*
      //Override to support conditional editing of the table view.
